@@ -105,6 +105,10 @@ void device_init(CpuType *cpu, DeviceClockType *dev_clock)
 			if (strncmp(sync_type, "MMAP", 4) == 0) {
 				op_type = VdevIoOperation_MMAP;
 				device_supply_clock_vdev_func = device_supply_clock_vdev_mmap;
+			} 
+			else if (strncmp(sync_type, "EV3PROXY",8) == 0) {
+				op_type = VdevIoOperation_EV3PROXY;
+				device_supply_clock_vdev_func = device_supply_clock_vdev_ev3proxy;	
 			}
 			else {
 				device_supply_clock_vdev_func = device_supply_clock_vdev_udp;

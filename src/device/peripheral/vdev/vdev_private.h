@@ -9,6 +9,7 @@
 typedef enum {
 	VdevIoOperation_UDP = 0,
 	VdevIoOperation_MMAP,
+	VdevIoOperation_EV3PROXY,
 } VdevIoOperationType;
 
 typedef struct {
@@ -30,6 +31,12 @@ typedef struct {
 	uint8		*tx_data;
 	uint32		rx_data_addr;
 	uint8		*rx_data;
+
+	/*
+	* for EV3Proxy Only
+	*/
+	FILE *tx_fp;
+	FILE *rx_fp;
 } VdevControlType;
 extern VdevControlType vdev_control;
 extern void device_init_vdev(MpuAddressRegionType *region, VdevIoOperationType op_type);
@@ -48,6 +55,14 @@ extern MpuAddressRegionOperationType	vdev_udp_memory_operation;
 extern void device_init_vdev_mmap(MpuAddressRegionType *region);
 extern void device_supply_clock_vdev_mmap(DeviceClockType *dev_clock);
 extern MpuAddressRegionOperationType	vdev_mmap_memory_operation;
+
+
+/*
+* EV3 proxy operations
+*/
+extern void device_init_vdev_ev3proxy(MpuAddressRegionType *region);
+extern void device_supply_clock_vdev_ev3proxy(DeviceClockType *dev_clock);
+extern MpuAddressRegionOperationType	vdev_ev3proxy_memory_operation;
 
 
 #endif /* _VDEV_PRIVATE_H_ */

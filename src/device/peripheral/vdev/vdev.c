@@ -28,6 +28,10 @@ void device_init_vdev(MpuAddressRegionType *region, VdevIoOperationType op_type)
 	else if (op_type == VdevIoOperation_MMAP) {
 		vdev_memory_operation = vdev_mmap_memory_operation;
 		device_init_vdev_mmap(region);
+	} 
+	else if (op_type == VdevIoOperation_EV3PROXY) {
+		vdev_memory_operation = vdev_ev3proxy_memory_operation;
+		device_init_vdev_ev3proxy(region);
 	}
 	else {
 		ASSERT(0);
