@@ -46,6 +46,7 @@ OBJS	+=	can.o
 OBJS	+=	vdev.o
 OBJS	+=	vdev_mmap.o
 OBJS	+=	vdev_udp.o
+OBJS	+=  vdev_ev3_proxy.o
 OBJS	+=	serial.o
 OBJS	+=	dbg_target_serial.o
 OBJS	+=	dbg_target_cpu.o
